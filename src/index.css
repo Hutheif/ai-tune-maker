@@ -8,49 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Music App Dark Theme */
-    --background: 220 26% 6%;
-    --foreground: 0 0% 98%;
+    /* SmartCompare Light Theme */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
-    --card: 220 26% 8%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
 
-    --popover: 220 26% 8%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 260 100% 70%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 214 100% 59%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 26% 12%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 220 26% 10%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 320 100% 70%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 26% 12%;
-    --input: 220 26% 10%;
-    --ring: 260 100% 70%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 214 100% 59%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
-    /* Music-specific design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(260 100% 70%), hsl(320 100% 70%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 26% 8%), hsl(220 26% 12%));
-    --gradient-hero: linear-gradient(135deg, hsl(260 100% 20%), hsl(320 100% 20%));
-    --shadow-glow: 0 0 40px hsl(260 100% 70% / 0.3);
-    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.3);
+    /* SmartCompare design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 59%), hsl(234 100% 69%));
+    --gradient-secondary: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 96%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 100% 95%), hsl(234 100% 95%));
+    --shadow-glow: 0 0 40px hsl(214 100% 59% / 0.15);
+    --shadow-card: 0 4px 24px hsl(214 100% 59% / 0.1);
+    --shadow-soft: 0 2px 12px hsl(214 31% 91% / 0.5);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    /* Player specific */
-    --player-bg: hsl(220 26% 8% / 0.9);
-    --player-border: hsl(260 100% 70% / 0.2);
+    /* Compare specific */
+    --ai-bg: hsl(214 100% 97%);
+    --ai-border: hsl(214 100% 85%);
 
     --sidebar-background: 0 0% 98%;
 
@@ -70,11 +71,34 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark mode inherits the same music theme */
-    --background: 220 26% 4%;
-    --card: 220 26% 6%;
-    --muted: 220 26% 8%;
-    --border: 220 26% 10%;
+    /* SmartCompare Dark Theme */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 214 100% 59%;
+    --primary-foreground: 222.2 84% 4.9%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 214 100% 59%;
+
+    --ai-bg: hsl(217.2 32.6% 17.5%);
+    --ai-border: hsl(214 100% 30%);
   }
 }
 
@@ -85,7 +109,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    background: var(--gradient-secondary);
   }
 
   /* Custom scrollbar */
@@ -108,14 +131,14 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  .music-card {
-    @apply bg-card border border-border rounded-2xl p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-    box-shadow: var(--shadow-card);
+  .product-card {
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    box-shadow: var(--shadow-soft);
   }
 
-  .music-card:hover {
-    box-shadow: var(--shadow-glow);
-    border-color: hsl(var(--primary) / 0.5);
+  .product-card:hover {
+    box-shadow: var(--shadow-card);
+    border-color: hsl(var(--primary) / 0.3);
   }
 
   .gradient-text {
@@ -125,10 +148,18 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
   }
 
-  .player-controls {
-    @apply flex items-center gap-4 p-4 rounded-2xl;
-    background: var(--player-bg);
-    border: 1px solid var(--player-border);
-    backdrop-filter: blur(20px);
+  .ai-summary {
+    @apply rounded-xl p-6 border;
+    background: var(--ai-bg);
+    border-color: var(--ai-border);
+  }
+
+  .search-card {
+    @apply bg-card border border-border rounded-2xl p-8 transition-all duration-300;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .sticky-button {
+    @apply fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-sm border-t border-border;
   }
 }
